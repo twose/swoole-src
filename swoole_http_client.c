@@ -1990,7 +1990,7 @@ void http_client_clear_reset(zval *zobject TSRMLS_DC)
 #endif
 
     // not keep_alive, try close it actively
-    if (http->keep_alive == 0 && http->state != HTTP_CLIENT_STATE_WAIT_CLOSE)
+    if (http->keep_alive == 0 && http->state != HTTP_CLIENT_STATE_WAIT_CLOSE  && !http->upgrade)
     {
         zval *retval = NULL;
         sw_zend_call_method_with_0_params(&zobject, swoole_http_client_class_entry_ptr, NULL, "close", &retval);
