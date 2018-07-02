@@ -791,7 +791,6 @@ static void http_client_onReceive(swClient *cli, char *data, uint32_t length)
         return;
     }
 
-    swString_clear(cli->buffer);
     if (http->keep_alive == 0 && http->state != HTTP_CLIENT_STATE_WAIT_CLOSE)
     {
         sw_zend_call_method_with_0_params(&zobject, swoole_http_client_class_entry_ptr, NULL, "close", &retval);
